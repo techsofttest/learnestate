@@ -242,12 +242,17 @@
         }
 
         .video-header {
-            padding: 20px;
-            background: #333;
+            padding: 5px;
+            background: white;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .video-header h5 {
+            margin: 0px;
+            padding: 5px 15px;
         }
 
         .video-close {
