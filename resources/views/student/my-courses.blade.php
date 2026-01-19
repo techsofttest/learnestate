@@ -313,10 +313,30 @@
             }
 
             .lesson-item {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: row;
+                align-items: center;
                 gap: 10px;
             }
+
+            .lesson-duration
+            {
+                font-size: 10px;
+            }
+
+            .lesson-icon {
+                width: 25px;
+                height: 25px;
+            }
+
+            .lesson-title {
+            font-size: 13px;
+            }
+
+            .top-bar
+            {
+                text-align:center;
+            }
+
         }
 
 </style>

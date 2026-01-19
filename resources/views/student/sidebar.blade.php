@@ -12,11 +12,11 @@
         }
 
         .sidebar-header {
-            padding: 20px;
+            padding: 10px;
             text-align: center;
             color: white;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
 
         .sidebar-header h4 {
