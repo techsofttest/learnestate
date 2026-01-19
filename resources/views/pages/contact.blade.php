@@ -117,7 +117,7 @@ Jossys Complex, Pathadipalam, Changampuzha Nagar, Ernakulam, Kerala, India</p>
 <div class="co-in-form-inner">
 
 
-<form method="post" action="#">
+<form id="contactForm" method="post" action="#">
 
      <div class="title-area  mb-15">
                            
@@ -181,5 +181,25 @@ Jossys Complex, Pathadipalam, Changampuzha Nagar, Ernakulam, Kerala, India</p>
   </div>
     </div>
     
+
+
+@endsection
+
+
+@section('footer_extras')
+
+<script>
+
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // stop real submit
+
+    // show success message
+    alertify.success('Message sent, We will contact you soon!');
+
+    // reset form fields
+    this.reset();
+
+});
+</script>
 
 @endsection

@@ -38,6 +38,12 @@
 
          @yield('head_extras')
 
+         <style>
+            body{
+                padding-right: 0 !important;
+            }
+         </style>
+
 </head>
 
 
@@ -58,12 +64,12 @@
 
 
 
-        <div class="modal fade youmyModal" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal fade youmyModal" id="registerModal" data-bs-backdrop="false" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Register</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
       </div>
 
       <div class="modal-body">
@@ -125,12 +131,12 @@
 
 
 
-    <div class="modal fade youmyModal" id="youmyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade youmyModal" id="youmyModal" tabindex="-1" data-bs-backdrop="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Sign In</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
       </div>
       <div class="modal-body">
 
@@ -154,13 +160,13 @@
             </button>
             <br>
 
-            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal" class="ff">
+            <a href="javascript:void(0);" id="openRegister" class="ff">
                 Create an account
             </a>
             
-            <!--<a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#forgotModal" data-bs-dismiss="modal" class="ff">
+            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#forgotModal" data-bs-dismiss="modal" class="ff">
                 Forgot your password?
-            </a>-->
+            </a>
 
         </div>
     </div>
@@ -180,15 +186,15 @@
 
 
 
-  <div class="modal fade youmyModal" id="forgotModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade youmyModal" id="forgotModal" data-bs-backdrop="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header">                
         <h5 class="modal-title" id="staticBackdropLabel">Forgot Password</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
       </div>
       <div class="modal-body">
-       <form action="" method="POST" class="slider-contactform form-style3 cnt ">
+       <form id="forgotPasswordForm" action="#" method="POST" class="slider-contactform form-style3 cnt ">
 <div class="row gx-20 mt-30">
 <div class="form-group col-md-12">
 <input type="email" name="email"  placeholder="Email  " required>  
@@ -306,6 +312,22 @@
 <script>
 
 
+document.getElementById('openRegister').addEventListener('click', function () {
+    const loginModalEl = document.getElementById('youmyModal');
+    const registerModalEl = document.getElementById('registerModal');
+
+    const loginModal = bootstrap.Modal.getInstance(loginModalEl);
+    loginModal.hide();
+
+    loginModalEl.addEventListener('hidden.bs.modal', function () {
+        const registerModal = new bootstrap.Modal(registerModalEl);
+        registerModal.show();
+    }, { once: true });
+});
+
+
+
+
  var header = $('#header-sticky');
     var win = $(window);
     
@@ -389,6 +411,24 @@
   });
 </script> 
 
+
+<script>
+
+document.getElementById('forgotPasswordForm').addEventListener('submit', function (e) {
+
+    e.preventDefault(); // stop real submit
+
+    // show success message
+    alertify.success('Password reset link sent to email');
+
+    // reset form fields
+    this.reset();
+
+    $('#forgotModal').hide();
+
+});
+
+</script>
 
 
 
