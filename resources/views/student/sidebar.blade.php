@@ -231,6 +231,10 @@
                 padding: 15px;
             }
 
+
+            .module-info {
+                font-size: 10px;
+            }
             
 
             .sidebar-nav a i {
