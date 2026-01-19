@@ -217,13 +217,13 @@
 
         @media (max-width: 768px) {
             .sidebar {
-                width: 70px;
+                width: 100%;
             }
 
             .sidebar-header h4,
             .sidebar-header p,
             .sidebar-nav a span {
-                display: none;
+                /*display: none;*/
             }
 
             .sidebar-nav a, .sidebar-nav button {
@@ -238,8 +238,13 @@
             }
 
             .main-content {
-                margin-left: 70px;
+                margin-left: 0;
                 padding: 15px;
+            }
+
+            
+            .module-title {
+                font-size: 12px;
             }
 
             .stats-container {
