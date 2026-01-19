@@ -223,11 +223,11 @@
             .sidebar-header h4,
             .sidebar-header p,
             .sidebar-nav a span {
-                /*display: none;*/
+                display: block;
             }
 
-            .sidebar-nav a, .sidebar-nav button {
-                justify-content: center;
+            .sidebar-nav a, .sidebar-nav button, .sidebar-nav form{
+                justify-content: start;
                 padding: 15px;
             }
 
