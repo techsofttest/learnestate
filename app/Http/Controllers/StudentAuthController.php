@@ -29,10 +29,10 @@ class StudentAuthController extends Controller
             'is_active' => true,
         ]);
 
-        Auth::guard('student')->login($student);
-        $request->session()->regenerate();
+        //Auth::guard('student')->login($student);
+        //$request->session()->regenerate();
 
-        return redirect()->back()->with('success', 'Registered Successfully');
+        return redirect()->back()->with('success', 'Registered Successfully, Login with your credentials');
     }
 
 
