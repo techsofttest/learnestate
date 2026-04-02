@@ -187,19 +187,41 @@ Jossys Complex, Pathadipalam, Changampuzha Nagar, Ernakulam, Kerala, India</p>
 
 
 @section('footer_extras')
-
 <script>
-
 document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // stop real submit
+    e.preventDefault();
 
-    // show success message
-    alertify.success('Message sent, We will contact you soon!');
+    const form     = this;
+    const btn      = form.querySelector('button[name="submit"]');
+    const original = btn.innerHTML;
 
-    // reset form fields
-    this.reset();
+    btn.disabled  = true;
+    btn.innerHTML = 'Sending...';
 
+    fetch(form.action, {
+        method:  'POST',
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Accept':       'application/json',
+        },
+        body: new FormData(form),
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alertify.success(data.message);
+            form.reset();
+        } else {
+            alertify.error(data.message);
+        }
+    })
+    .catch(() => {
+        alertify.error('Network error. Please try again.');
+    })
+    .finally(() => {
+        btn.disabled  = false;
+        btn.innerHTML = original;
+    });
 });
 </script>
-
 @endsection

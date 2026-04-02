@@ -298,7 +298,7 @@
 						<div class="tour-listing__card-inner-content">
 						<div class="ttpricesec">
 							 
-						<h4 class="tour-listing__card-price">₹ {{$course->price}} only</h4>
+						<h4 class="tour-listing__card-price">₹ {{$course->sale_price}} only</h4>
 						 
 								</div>
                                     <div class="tour-listing__card-review-box">

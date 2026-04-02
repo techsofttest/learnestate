@@ -21,10 +21,11 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
 {
-    public function panel(Panel $panel): Panel
+    public function panel(Panel $panel): Panel  
     {
         return $panel
             ->default()
+            ->profile()
             ->id('admin')
             ->path('admin')
             ->brandLogo(asset('images/admin_logo.png'))

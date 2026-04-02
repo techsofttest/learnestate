@@ -36,6 +36,9 @@
 		 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 
+         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
          @yield('head_extras')
 
          <style>

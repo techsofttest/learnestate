@@ -46,7 +46,7 @@
                     <td>{{ $payment->course->title }}</td>
                     <td>₹ {{ number_format($payment->amount, 2) }}</td>
                     <td>{{ ucfirst($payment->gateway) }}</td>
-                    <td>DEMO123</td>
+                    <td>{{$payment->order_id}}</td>
                     <td>
                         @if($payment->status == 'paid')
                             <span class="badge bg-success">Paid</span>

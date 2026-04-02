@@ -33,6 +33,8 @@ Route::get('/testimonials',[TestimonialController::class,'index']);
 
 Route::get('/contact',[ContactController::class,'index']);
 
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
 
 
 
@@ -57,6 +59,10 @@ Route::middleware(['auth:student'])->group(function() {
         [CoursePurchaseController::class, 'purchase'])
         ->name('student.course.purchase');
 
+    Route::post('/payment/razorpay/verify',
+        [CoursePurchaseController::class, 'verify'])
+        ->name('payment.razorpay.verify');
+
     Route::get('/student/dashboard',[StudentController::class,'dashboard'])->name('student.dashboard');
 
     Route::get('/student/my-courses',[StudentController::class,'courses'])->name('student.courses');
@@ -65,9 +71,11 @@ Route::middleware(['auth:student'])->group(function() {
         ->name('student.payments');
 
     Route::post('/student/logout', [StudentAuthController::class, 'logout'])->name('student.logout');
-
-
 });
+
+Route::post('/payment/razorpay/webhook', [CoursePurchaseController::class, 'webhook'])
+    ->name('payment.razorpay.webhook');
+
 
 
 //End

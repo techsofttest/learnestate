@@ -43,13 +43,13 @@ class CourseForm
                     ->label('Duration In Hours')
                     ->numeric(),
                 TextInput::make('price')
-                    ->label('Current Price')
+                    ->label('Original Price')
                     ->required()
                     ->numeric()
                     ->default(0.0)
                     ->prefix('Rs'),
                 TextInput::make('sale_price')
-                    ->label('Strike Price')
+                    ->label('Strike Price / Current Price')
                     ->numeric()
                     ->required()
                     ->prefix('Rs'),
